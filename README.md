@@ -3,7 +3,7 @@
 
 ## Technologies Used:
 
-NextJS, Vercel, Typescript, Clerk Auth, Tailwind CSS
+NextJS, Vercel, Typescript, Clerk Auth, Tailwind CSS, shadcn/ui, 
 
-
+Zustand, React, 
 [shadcn/ui docs](https://ui.shadcn.com/)
