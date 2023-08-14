@@ -6,7 +6,10 @@ import {zodResolver} from '@hookform/resolvers/zod'
 
 import { useStoreModal } from "@/hooks/use-store-modal"
 import { Modal } from "@/components/ui/modal"
-import { Form, FormField, FormItem, FormLabel } from '@/components/ui/form'
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { Input } from "@/components/ui/input"
+import { Button } from '@/components/ui/button'
+
 
 
 // Zustand
@@ -47,14 +50,18 @@ export const StoreModal = () => {
                 name='name'
                 render={({field}) => (
                   <FormItem>
-                    <FormLabel>
-                      Name
-                    </FormLabel>
+                    <FormLabel>Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder='E-Commerce' {...field} />
+                    </FormControl>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
-
-
+              <div className="pt-6 space-x-2 flex items-center justify-end w-full">
+                  <Button variant='outline' onClick={storeModal.onClose}>Cancel</Button>
+                  <Button type='submit'>Continue</Button>
+              </div>
             </form>
           </Form>
         </div>
