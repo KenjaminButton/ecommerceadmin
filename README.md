@@ -5,5 +5,6 @@
 
 NextJS, Vercel, Typescript, Clerk Auth, Tailwind CSS, shadcn/ui, 
 
-Zustand, React, 
+Zustand, React, Prisma, PlanetScale, MySQL
+
 [shadcn/ui docs](https://ui.shadcn.com/)
