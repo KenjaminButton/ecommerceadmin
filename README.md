@@ -13,7 +13,7 @@ Zustand, React, Prisma, PlanetScale, MySQL
 
 Next Steps: 
 
-- [] Admin Dashboard Setup
+- [x] Admin Dashboard Setup
 - [] Admin Navigation Bar
 - [] Admin Settings Page
 - [] Admin Dashboard Setup
