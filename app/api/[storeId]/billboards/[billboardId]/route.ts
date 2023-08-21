@@ -60,7 +60,7 @@ export async function PATCH (
 
 export async function DELETE (
   req: Request,
-  {params} : {params: {storeId: string}}
+  {params} : {params: {storeId: string, billboardId: string}}
 ) {
   try {
     const {userId} = auth()
@@ -69,21 +69,32 @@ export async function DELETE (
       return new NextResponse('Unauthenticated', {status: 401})
     }
 
-    if (!params.storeId) {
-      return new NextResponse('Store id is required', {status: 400})
+    if (!params.billboardId) {
+      return new NextResponse('Billboard id is required', {status: 400})
     }
 
-    const store = await prismadb.store.deleteMany({
+    const storeByUserId = await prismadb.store.findFirst({
       where: {
         id: params.storeId,
-        userId: userId
+        userId
       }
     })
 
-    return NextResponse.json(store)
+    if (!storeByUserId) {
+      // user is trying to update someone else's store
+      return new NextResponse('Unauthorized', {status: 403})
+    }
+
+    const billboard = await prismadb.billboard.deleteMany({
+      where: {
+        id: params.billboardId,
+      }
+    })
+
+    return NextResponse.json(billboard)
 
   } catch (error) {
-    console.log('[STORE_DELETE]', error)
+    console.log('[BILLBOARD_DELETE]', error)
     return new NextResponse('Internal Error', {status: 500})
   }
 }
