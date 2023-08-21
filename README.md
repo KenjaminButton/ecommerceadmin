@@ -18,4 +18,6 @@ Next Steps:
 - [x] Admin Settings Page
 - [x] Admin Dashboard Setup
 
-- [] Create a component for image upload
+- [x] Create a component for image upload
+
+- [] Create a POST route for billboards
