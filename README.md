@@ -5,7 +5,7 @@
 
 NextJS, Vercel, Typescript, Clerk Auth, Tailwind CSS, shadcn/ui, 
 
-Zustand, React, Prisma, PlanetScale, MySQL
+Zustand, React, Prisma, PlanetScale, MySQL, Cloudinary
 
 [shadcn/ui docs](https://ui.shadcn.com/)
 
@@ -14,8 +14,8 @@ Zustand, React, Prisma, PlanetScale, MySQL
 Next Steps: 
 
 - [x] Admin Dashboard Setup
-- [] Admin Navigation Bar
-- [] Admin Settings Page
-- [] Admin Dashboard Setup
+- [x] Admin Navigation Bar
+- [x] Admin Settings Page
+- [x] Admin Dashboard Setup
 
-k
+- [] Create a component for image upload
