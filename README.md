@@ -20,4 +20,6 @@ Next Steps:
 
 - [x] Create a component for image upload
 
-- [] Create a POST route for billboards
+- [x] Create a GET and POST route for billboards
+
+- [] Create a PATCH and DELETE route for billboards
