@@ -22,4 +22,7 @@ Next Steps:
 
 - [x] Create a GET and POST route for billboards
 
-- [] Create a PATCH and DELETE route for billboards
+- [x] Create a PATCH and DELETE route for billboards (BUG found in billboard label changing redirect)
+
+- [] 
+
