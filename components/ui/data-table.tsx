@@ -1,10 +1,15 @@
 "use client"
+import { useState } from "react"
+
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 
 import {
   ColumnDef,
+  ColumnFiltersState,
   flexRender,
   getCoreRowModel,
+  getFilteredRowModel,
   getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table"
@@ -19,6 +24,7 @@ import {
 } from "@/components/ui/table"
 
 
+
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
@@ -28,15 +34,37 @@ export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
+
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
+    []
+  )
+
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    onColumnFiltersChange: setColumnFilters,
+    getFilteredRowModel: getFilteredRowModel(),
+    state: {
+      columnFilters
+    }
   })
 
   return (
     <div>
+      {/* Filtering */}
+      <div className="flex items-center py-4">
+        <Input
+          placeholder="Filter billboards..."
+          value={(table.getColumn("label")?.getFilterValue() as string) ?? ""}
+          onChange={(event) =>
+            table.getColumn("label")?.setFilterValue(event.target.value)
+          }
+          className="max-w-sm"
+        />
+      </div>
+      {/* Table */}
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -81,6 +109,7 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
+      {/* Pagination */}
       <div className="flex items-center justify-end space-x-2 py-4">
         <Button
           variant="outline"
@@ -102,3 +131,4 @@ export function DataTable<TData, TValue>({
     </div>
   )
 }
+
