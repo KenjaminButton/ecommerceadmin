@@ -18,11 +18,6 @@ import { Button } from "@/components/ui/button";
 import { BillboardColumn } from "./columns"
 import { AlertModal } from "@/components/modals/alert-modal";
 
-
-
-
-
-
 interface CellActionProps {
   data: BillboardColumn;
 }
@@ -45,9 +40,8 @@ export const CellAction: React.FC<CellActionProps> = ({
   const onDelete = async () => {
     try {
       setLoading(true)
-      await axios.delete(`/api/stores/${params.storeId}/billboards/${params.billboardId}`)
+      await axios.delete(`/api/${params.storeId}/billboards/${data.id}`)
       router.refresh()
-      router.push('/')
       toast.success('Billboard deleted')
     } catch(error) {
       toast.error('Did you remove all categories first dumb dumb?')
