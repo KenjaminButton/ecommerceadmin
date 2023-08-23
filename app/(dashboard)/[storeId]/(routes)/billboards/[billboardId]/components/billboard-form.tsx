@@ -36,6 +36,8 @@ interface BillboardFormProps {
   initialData: Billboard | null;
 }
 
+
+
 export const BillboardForm: React.FC<BillboardFormProps> = ({initialData}) => {
   const params = useParams()
   const router = useRouter()
@@ -44,7 +46,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({initialData}) => {
   const [loading, setLoading] = useState(false)
 
   const title = initialData ? "Edit billboard" : "Create billboard"
-  const description = initialData ? "Edit billboard" : "Add a new billboard"
+  const description = initialData ? "Edit a billboard desc" : "Add a new billboard desc"
   const toastMessage = initialData ? "Billboard updated" : "Billboard created"
   const action = initialData ? "Save changes" : "Create"
 

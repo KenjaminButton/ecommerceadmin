@@ -43,7 +43,7 @@ export async function PATCH (
     }
 
     if (!imageUrl) {
-      return new NextResponse('Image URL  is required', {status: 400})
+      return new NextResponse('Image URL is required', {status: 400})
     }
 
     if (!params.billboardId) {
@@ -64,7 +64,7 @@ export async function PATCH (
 
     const billboard = await prismadb.billboard.updateMany({
       where: {
-        id: params.storeId,
+        id: params.billboardId,
       },
       data: {
         label,
