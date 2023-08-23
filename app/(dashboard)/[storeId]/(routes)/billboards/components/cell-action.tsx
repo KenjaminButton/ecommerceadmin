@@ -2,6 +2,7 @@
 
 import { Copy, Edit, MoreHorizontal, Trash } from "lucide-react";
 import toast from "react-hot-toast";
+import { useParams, useRouter } from "next/navigation";
 
 import { 
   DropdownMenu, 
@@ -17,6 +18,7 @@ import { BillboardColumn } from "./columns"
 
 
 
+
 interface CellActionProps {
   data: BillboardColumn;
 }
@@ -24,6 +26,9 @@ interface CellActionProps {
 export const CellAction: React.FC<CellActionProps> = ({
   data
 }) => {
+
+  const router = useRouter()
+  const params = useParams()
 
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id)
@@ -47,7 +52,7 @@ export const CellAction: React.FC<CellActionProps> = ({
           <Copy className="mr-2 h-4 w-4" />
           Copy Id
         </DropdownMenuItem>
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={() => router.push(`/${params.storeId}/billboards/${data.id}`)}>
           <Edit className="mr-2 h-4 w-4"/>
           Update
         </DropdownMenuItem>
