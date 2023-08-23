@@ -10,7 +10,7 @@ import { DataTable } from '@/components/ui/data-table';
 import { BillboardColumn, columns } from './columns';
 
 interface BillboardClientProps {
-  data: BillboardColumn
+  data: BillboardColumn[];
 }
 
 export const BillboardClient: React.FC<BillboardClientProps> = ({
