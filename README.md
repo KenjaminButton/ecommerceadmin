@@ -24,5 +24,6 @@ Next Steps:
 
 - [x] Create a PATCH and DELETE route for billboards (BUG found in billboard label changing redirect)
 
-- [] Create cell row actions for data-table component
+- [x] Create cell row actions for data-table component
 
+- [] Categories Entity
