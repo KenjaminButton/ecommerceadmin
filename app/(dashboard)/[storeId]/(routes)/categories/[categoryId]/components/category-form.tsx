@@ -28,7 +28,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 
 const formSchema = z.object({
   name: z.string().min(1),
-  billboardId: z.string().min(1)
+  billboardId: z.string().min(1),
 })
 
 type CategoryFormValues = z.infer<typeof formSchema>;
@@ -38,11 +38,9 @@ interface CategoryFormProps {
   billboards: Billboard[];
 }
 
-
-
 export const CategoryForm: React.FC<CategoryFormProps> = ({
   initialData,
-  billboards
+  billboards,
 }) => {
   const params = useParams()
   const router = useRouter()
@@ -67,12 +65,12 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
     try {
       setLoading(true)
       if (initialData) {
-        await axios.patch(`/api/${params.storeId}/billboards/${params.billboardId}`, data)
+        await axios.patch(`/api/${params.storeId}/categories/${params.categoryId}`, data)
       } else {
-        await axios.post(`/api/${params.storeId}/billboards`, data)
+        await axios.post(`/api/${params.storeId}/categories`, data)
       }
       router.refresh()
-      router.push(`/${params.storeId}/billboards`)
+      router.push(`/${params.storeId}/categories`)
       toast.success(toastMessage)
     } catch (error) {
       toast.error('I messed up... Next time it will work')
@@ -84,10 +82,10 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
   const onDelete = async () => {
     try {
       setLoading(true)
-      await axios.delete(`/api/${params.storeId}/billboards/${params.billboardId}`)
+      await axios.delete(`/api/${params.storeId}/categories/${params.categoryId}`)
       router.refresh()
-      router.push(`/${params.storeId}/billboards`)
-      toast.success('Billboard deleted')
+      router.push(`/${params.storeId}/categories`)
+      toast.success('Category deleted')
     } catch(error) {
       toast.error('Did you remove all categories first dumb dumb?')
     } finally {
@@ -154,7 +152,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
                       <SelectTrigger>
                         <SelectValue 
                           defaultValue={field.value}
-                          placeholder="Select a billboard"
+                          placeholder="Select a category"
                         />
                       </SelectTrigger>
                     </FormControl>
